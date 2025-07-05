@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Text;
 
-namespace Task
+namespace Task.Entities
 {
     public class Customer
     {
@@ -47,7 +47,7 @@ namespace Task
                 if (product.IsShippable)
                 {
                     shippingProducts.Add(product,quantity);
-                    double productTotalWeight =( product.Weight * quantity);
+                    double productTotalWeight = product.Weight * quantity;
                     cartWeight += productTotalWeight;
                     shippingDetails.AppendLine($"{quantity}x {product.Name,-20} {productTotalWeight,-3}g");
                 }

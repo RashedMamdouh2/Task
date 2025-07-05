@@ -1,4 +1,4 @@
-﻿namespace Task
+﻿namespace Task.Interfaces
 {
     public interface IShippmentHandler
     {

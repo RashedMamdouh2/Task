@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task
+namespace Task.Entities
 {
     public class Product
     {
@@ -30,7 +30,7 @@ namespace Task
 
         private void ManageCustomerCart(int quantity, Customer customer)
         {
-            this.Quantity -= quantity;
+            Quantity -= quantity;
             customer.Balance -= CalculateCost(quantity); ;
 
             if (customer.Cart.ContainsKey(this))
@@ -49,9 +49,9 @@ namespace Task
         {
             double TotalCost = CalculateCost(quantity);
             double shippingFees = 0d;
-            if (this.IsShippable)
+            if (IsShippable)
             {
-                shippingFees += ShippingService.CalculateShippingFeesPerProduct(quantity, pricePerGramm: 2, this.Weight);
+                shippingFees += ShippingService.CalculateShippingFeesPerProduct(quantity, pricePerGramm: 2, Weight);
             }
 
             if( customer.Balance < TotalCost+shippingFees)
@@ -63,7 +63,7 @@ namespace Task
 
         private void ValidateQuantity(int quantity)
         {
-            if(quantity > this.Quantity)
+            if(quantity > Quantity)
             {
                 throw new Exception(message: "There Is No Enough Quantity Of This Product");
 
@@ -80,7 +80,7 @@ namespace Task
         }
         private float CalculateCost(int quantity)
         {
-            return quantity * this.Price;
+            return quantity * Price;
         }
 
         public override bool Equals(object? obj)
@@ -90,12 +90,12 @@ namespace Task
             {
                 return false;
             }
-            return string.Equals(this.Name,product2.Name);
+            return string.Equals(Name,product2.Name);
         }
         public override int GetHashCode()
         {
             int hash = 17;
-            hash += this.Name.GetHashCode() * 23;
+            hash += Name.GetHashCode() * 23;
             return hash;
         }
 

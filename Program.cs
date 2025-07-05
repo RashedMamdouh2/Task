@@ -1,4 +1,5 @@
 ﻿using Task;
+using Task.Entities;
 
 public static class Program
 {

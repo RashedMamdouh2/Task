@@ -1,4 +1,6 @@
-﻿namespace Task
+﻿using Task.Interfaces;
+
+namespace Task.Entities
 {
     public class ShippingService : IShippmentHandler
     {
